@@ -1,10 +1,8 @@
-import React from "react"; // somebody export default thats why we import 
+import React from "react"; // somebody export default thats why we import
 import ReactDom from "react-dom/client";
 import Head from "./components/Header";
-import Body from "./components/Body"
+import Body from "./components/Body";
 import Footer from "./components/Footer";
-
-
 
 const AppLayout = () => {
   return (

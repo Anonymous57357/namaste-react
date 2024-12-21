@@ -35,49 +35,73 @@
 
 /* BODY SECTION */
 
-/* Body styles */
-.body {
-    padding: 20px;
-    background-color: #f9f9f9; 
-    font-family: Arial, sans-serif; 
-  }
-  
-  .filter-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff; /* Blue background */
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .filter-btn button {
-    all: unset; /* Resets any default button styles */
-    background: transparent;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  .filter-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
-  .filter-btn button:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
-  
-  .filter-btn button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Adds focus ring */
-  }
+/* Filter Button Container */
+.filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+/* Search Container */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Search Box Input */
+.search-box {
+  width: 250px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Search Button */
+.search button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search button:hover {
+  background-color: #0056b3;
+}
+
+/* Top Rated Button */
+.filter-btn button {
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn button:hover {
+  background-color: #1e7e34;
+}
+
   
   
   /* Restaurant card container */
@@ -134,4 +158,40 @@
     overflow: hidden;
     white-space: nowrap;
   }
+
+  /* Shimmer container styling */
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Shimmer card styling */
+.shimmer-card {
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(
+    90deg,
+    #f4f4f4 25%,
+    #e0e0e0 50%,
+    #f4f4f4 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+/* Keyframes for shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
   
