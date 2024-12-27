@@ -1,6 +1,9 @@
 import RestaurentCard from "./RestaurentCard";
 import { useState, useEffect } from "react"; // named export
 import Shimmer from "./Shimmer";
+import { SWIGGY_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
+import userOnlineStatus from "../utils/userOnlineSattus";
 
 const Body = () => {
   // state variables
@@ -8,24 +11,18 @@ const Body = () => {
   const [filteredRestaurent, setFilteredRestaurent] = useState([]); // backup data
   const [searchText, setSearchText] = useState("");
 
-  // console.log("Body component re-rendered");
-
   useEffect(() => {
     fetchData();
-    // console.log("useEffect Hook is called")
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("http://127.0.0.1:8000/api/v1/swiggy/restaurants");
-
+    const data = await fetch(SWIGGY_URL + "/restaurants");
     const json = await data.json();
-    console.log(json);
 
-    const jsonData = json?.data ?? [];
-    setListOfRestaurents(jsonData);
-    setFilteredRestaurent(jsonData);
+    setListOfRestaurents(json?.data);
+    setFilteredRestaurent(json?.data);
 
-    if (!jsonData.length) {
+    if (!json?.data) {
       console.log("Data is undefined or empty.");
     }
   };
@@ -38,9 +35,19 @@ const Body = () => {
   };
 
   const handleTopRated = () => {
-    const filteredList = listOfRestaurents.filter((res) => res.avgRating >= 4);
+    const filteredList = listOfRestaurents.filter((res) => res.avgRating > 4.3);
     setFilteredRestaurent(filteredList);
   };
+
+  const onlineStatus = userOnlineStatus();
+
+  if (onlineStatus === false) {
+    return (
+      <h1>
+        Look like your network is gone. plese check the your nerwork connection!
+      </h1>
+    );
+  }
 
   if (listOfRestaurents.length === 0) {
     return <Shimmer />;
@@ -48,21 +55,35 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter-btn">
-        <div className="search">
+      <div className="flex justify-center ">
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-black border-solid "
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button onClick={handleSearch}>Search</button>
+          <button
+            className="p-4 ml-8 bg-teal-200 mx-2 py- rounded-lg text-center"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
         </div>
-        <button onClick={handleTopRated}>Top Rated Restaurants</button>
+        <div className="m-4 p-4">
+          <button
+            className="p-4 bg-teal-200 mx-2 py- rounded-lg text-center"
+            onClick={handleTopRated}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap items-center">
         {filteredRestaurent.map((restaurant) => (
-          <RestaurentCard key={restaurant._id} resData={restaurant} />
+          <Link to={`restaurants/${restaurant._id}`} key={restaurant._id}>
+            <RestaurentCard key={restaurant._id} resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

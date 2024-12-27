@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { APP_LOGO } from "../utils/constants";
+import { Link } from "react-router-dom";
+import userOnlineStatus from "../utils/userOnlineSattus";
 const Head = () => {
   const [button, setButton] = useState("login");
   ("Normal JavaScript variables do not persist state across renders. React's useState hook is used to maintain state, syncing the data and UI layers.");
@@ -9,24 +11,35 @@ const Head = () => {
   // rerendered the Head componendt once again (once setButton **triggerd) (calling not mutating or changing)
   // differ algorithm - finds the difference between old state (virtual dom tree) vs new state - updated state (new dom tree)
 
-  useEffect(() => {
-    console.log("useEffect hook called");
-  }, [button]);
+  useEffect(() => {}, []);
 
-  console.log("Header component rendered");
+  const userStatus = userOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo">
-        <img src={APP_LOGO}></img>
+    <div className="flex justify-between bg-pink-100 shadow-lg">
+      <div className="">
+        <img className="w-40" src={APP_LOGO}></img>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Contact us</li>
-          <li>cart</li>
+      <div className="flex items-center">
+        <ul className="flex m-4 font-sans text-lg">
+          <li className="px-4">{userStatus ? "Online:✅" : "Offline:🔴"}</li>
+          <li className="px-4">
+            <Link to="/"> home</Link>
+          </li>{" "}
+          <li className="px-4">
+            <Link to="/about"> About us</Link>
+          </li>{" "}
+          <li className="px-4">
+            <Link to="/contact"> Contact us</Link>
+          </li>{" "}
+          <li className="px-4">
+            <Link to="/cart"> cart</Link>
+          </li>
+          <li className="px-4">
+            <Link to="/grocery"> grocery</Link>
+          </li>
           <button
+            className="px-4"
             onClick={() => {
               // let btnName = "logout";
               button === "login" ? setButton("logout") : setButton("login");
