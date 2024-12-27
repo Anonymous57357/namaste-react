@@ -37,19 +37,21 @@ class AboutClass extends Component {
     console.log("parent componet wil unmount is called");
   }
   render() {
-    console.log("parent render"); 
+    console.log("parent render");
     const { followers, login, avatar_url } = this.state.userInfo;
     return (
-      <div>
-        <h2>About</h2>
-        <h4>Welcome to the about page!</h4>
-        {/* <User Name={"mukesh"} Location={"Vellore"} Contact={"mukesh@20"} /> */}
-        <UserClass
-          login={login}
-          followers={followers}
-          avatar_url={avatar_url}
-        />
-      </div>
+      <div className="container mx-auto p-8 text-center">
+      <h2 className="text-3xl font-bold text-gray-800 mb-4">About</h2>
+      <h4 className="text-lg text-gray-600 mb-6">
+        Welcome to the about page!
+      </h4>
+      <UserClass
+        login={login}
+        followers={followers}
+        avatar_url={avatar_url}
+      />
+    </div>
+    
     );
   }
 }

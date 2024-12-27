@@ -16,10 +16,14 @@ class UserClass extends React.Component {
   render() {
     const { login, followers, avatar_url } = this.props;
     return (
-      <div className="user-card">
-        <h2>Name: {login} </h2>
-        <h3>followers: {followers} </h3>
-        <img src={avatar_url} alt="avatar_url"></img>
+      <div className="flex flex-col justify-center items-center p-6 border-2 border-gray-200 rounded-lg shadow-lg bg-gray-50 w-80 mx-auto">
+        <img
+          className="w-24 h-24 rounded-full mb-4 border-4 border-gray-300"
+          src={avatar_url}
+          alt="avatar_url"
+        />
+        <h2 className="text-lg font-semibold text-gray-800">Name: {login}</h2>
+        <h3 className="text-sm text-gray-600">Followers: {followers}</h3>
       </div>
     );
   }
@@ -27,21 +31,21 @@ class UserClass extends React.Component {
 
 /**
  * ----- MOUNTING PHASE ------
- * 
+ *
  * Constructor (dummy data) state (dummy dat)
  * Render (dummy data)                     ------ render phase ----
  *        <HTML Dummy>
- * 
- * componentDidMount  
+ *
+ * componentDidMount
  *         (api call)                      ------ commit phase
  *           <this.setState .--> state variable updated
- * 
+ *
  * ----- UPDATE PHASE --------
- *   
+ *
  *         render (Api data)
  *          <HTML Api data>
- * 
- * 
+ *
+ *
  */
 
 export default UserClass;
