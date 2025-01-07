@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { APP_LOGO } from "../utils/constants";
 import { Link } from "react-router-dom";
 import userOnlineStatus from "../utils/userOnlineSattus";
+import { useSelector } from "react-redux";
 const Head = () => {
   const [button, setButton] = useState("login");
   ("Normal JavaScript variables do not persist state across renders. React's useState hook is used to maintain state, syncing the data and UI layers.");
@@ -11,7 +12,8 @@ const Head = () => {
   // rerendered the Head componendt once again (once setButton **triggerd) (calling not mutating or changing)
   // differ algorithm - finds the difference between old state (virtual dom tree) vs new state - updated state (new dom tree)
 
-  useEffect(() => {}, []);
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   const userStatus = userOnlineStatus();
 
@@ -33,7 +35,7 @@ const Head = () => {
             <Link to="/contact"> Contact us</Link>
           </li>{" "}
           <li className="px-4">
-            <Link to="/cart"> cart</Link>
+            <Link to="/cart"> cart {cartItems.length} items</Link>
           </li>
           <li className="px-4">
             <Link to="/grocery"> grocery</Link>

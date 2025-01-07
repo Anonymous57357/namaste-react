@@ -1,4 +1,4 @@
-import RestaurentCard from "./RestaurentCard";
+import RestaurentCard, { withPromotedLabel } from "./RestaurentCard";
 import { useState, useEffect } from "react"; // named export
 import Shimmer from "./Shimmer";
 import { SWIGGY_URL } from "../utils/constants";
@@ -10,6 +10,8 @@ const Body = () => {
   const [listOfRestaurents, setListOfRestaurents] = useState([]);
   const [filteredRestaurent, setFilteredRestaurent] = useState([]); // backup data
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurentCard);
 
   useEffect(() => {
     fetchData();
@@ -44,7 +46,8 @@ const Body = () => {
   if (onlineStatus === false) {
     return (
       <h1>
-        Look like your network is gone. plese check the your nerwork connection!
+        Look like your network is gone. please check the your nerwork
+        connection!
       </h1>
     );
   }
@@ -82,7 +85,12 @@ const Body = () => {
       <div className="flex flex-wrap items-center">
         {filteredRestaurent.map((restaurant) => (
           <Link to={`restaurants/${restaurant._id}`} key={restaurant._id}>
-            <RestaurentCard key={restaurant._id} resData={restaurant} />
+            {/* we have write a logic for higher order function to enhanced and put label on promoted */}
+            {restaurant.promoted ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurentCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

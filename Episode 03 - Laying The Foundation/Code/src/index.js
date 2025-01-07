@@ -3,9 +3,11 @@ import ReactDom from "react-dom/client";
 import Head from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { Provider } from "react-redux";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Shimmer from "./components/Shimmer";
+import appStore from "./utils/appStore";
 
 // dynamic bunding
 // code splitting
@@ -23,9 +25,11 @@ const Error = lazy(() => import("./components/Error"));
 const AppLayout = () => {
   return (
     <div className="app">
-      <Head />
-      <Outlet />
-      <Footer />
+      <Provider store={appStore}>
+        <Head />
+        <Outlet />
+        <Footer />
+      </Provider>
     </div>
   );
 };
