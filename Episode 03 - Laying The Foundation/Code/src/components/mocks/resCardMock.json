@@ -1,0 +1,45 @@
+{
+  "promoted": false,
+  "_id": "6766aa3e967933fc2c21f289",
+  "image": "https://hogr.app/blog/wp-content/uploads/2023/10/image-86-612x400.png",
+  "name": "The Indian Curry House",
+  "cuisines": ["Indian", "Chinese"],
+  "avgRating": 4.5,
+  "delivery_time": 30,
+  "costForTwo": 500,
+  "menu": [
+    {
+      "name": "Butter Chicken",
+      "price": 250,
+      "_id": "6766aa3e967933fc2c21f28a",
+      "items": []
+    },
+    {
+      "name": "Paneer Tikka",
+      "price": 200,
+      "_id": "6766aa3e967933fc2c21f28b",
+      "items": []
+    },
+    {
+      "name": "Fried Rice",
+      "price": 150,
+      "_id": "6766aa3e967933fc2c21f28c",
+      "items": []
+    },
+    {
+      "name": "Sweet and Sour Chicken",
+      "price": 300,
+      "_id": "6766aa3e967933fc2c21f28d",
+      "items": []
+    },
+    {
+      "name": "Naan",
+      "price": 50,
+      "_id": "6766aa3e967933fc2c21f28e",
+      "items": []
+    }
+  ],
+  "createdAt": "2024-12-21T11:45:02.110Z",
+  "updatedAt": "2024-12-21T11:45:02.110Z",
+  "__v": 0
+}
