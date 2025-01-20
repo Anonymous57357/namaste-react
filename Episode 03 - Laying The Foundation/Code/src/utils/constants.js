@@ -4,4 +4,4 @@ export const CDN_URL =
 export const APP_LOGO =
   "https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png";
 
-export const SWIGGY_URL = "http://127.0.0.1:8000/api/v1/swiggy";
+export const SWIGGY_URL = "https://swiggy-store-api.onrender.com/api/v1/swiggy";

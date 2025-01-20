@@ -21,6 +21,8 @@ const Body = () => {
     const data = await fetch(SWIGGY_URL + "/restaurants");
     const json = await data.json();
 
+    console.log(json.data);
+
     setListOfRestaurents(json?.data);
     setFilteredRestaurent(json?.data);
 
@@ -62,7 +64,7 @@ const Body = () => {
         <div className="m-4 p-4">
           <input
             type="text"
-            data-testid= "searchInput"
+            data-testid="searchInput"
             className="border border-black border-solid "
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
