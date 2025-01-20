@@ -1,71 +1,57 @@
-## Episode 05 - Let's get Hooked
+# Episode 05 - Let's Get Hooked
 
-# industry best practices
+## Industry Best Practices
 
-- separate files
+- **Separate Files**: Always separate components and utilities into individual files for better organization and maintainability.
 
-# export data
+## Exporting Data in React
 
-- there are two ways to exports data
+- **Export Default**:
 
-# export default something - always exporting one file (default file)
+  - Used to export a single default value or component from a file.
+  - Example:
+    ```javascript
+    export default Component;
+    ```
+  - Import Syntax:
+    ```javascript
+    import Component from "path";
+    ```
 
-# import Component or element
+- **Named Exports**:
+  - Used to export multiple values or components from a file.
+  - Example:
+    ```javascript
+    export const someElement = ...;
+    export const someComponent = ...;
+    ```
+  - Import Syntax:
+    ```javascript
+    import { someElement, someComponent } from "path";
+    ```
 
-# export const someElement or SomeComeponents
+## Why is React Fast?
 
-# import {Component or Element} from "path"
+- React is highly efficient in **DOM manipulation**.
+- Websites consist of two layers:
+  1. **Data Layer** (backend)
+  2. **UI Layer** (frontend)
+- React efficiently synchronizes changes between these layers.
 
-# why is react is fast ?
+## React Hooks
 
-- react is effiecient in dom manupulation
+Hooks are **normal JavaScript utility functions** that give additional capabilities to variables.  
+Key Features:
 
-most importantly the webside its contains of 2 laywer 1. data layer (from backend) 2. ui layer(frontend)
+- Provide **"superpowers"** to variables, allowing state management and side-effect handling in React components.
+- Examples of commonly used hooks:
+  - `useState()`
+  - `useEffect()`
 
-# react hooks
+### useState()
 
-(Normal JS utility functions)
-
-- a normal javascript function its gives some utility to the variable this utility gives power to the variables
-
-- useState() - superpowerfull State vaiables in react (syncing datalayer + uilayer)
-- in otherways giving powers to normal js variables
-- maintain the state of the variable
-- const [currentState, functiontoUpdate] = useState()
-- useEffect()
-
-# useState
-
-1. param is used to set the variable if list of oject whatever it is
-2. a allback funciton is update the setVariable
-
-whenever the state variable is updates react is rerender the component
-
-// state variables super powerfull variable
-const [listOfRestaurents, setListOfRestaurents] = useState([
-
-]);
-
-// Normal js variable
-// let listOfRestaurents;
-
-// normal js variable
-// let listOfRestaurents = [
-
-// ];
-
-as soon as data layer update (state variable) the ui layer(setState - funct) update ui
-
-# react algorithm
-
-reconcilation algorithm (react fiber)
-
-## diff algorithm or react reconcilation algoruth (react fibre)
-
-# finding out ui and change the differnce
-
-# its just flush out the differnece between the dom tree (old dom(react => obj) vs new dom(react => obj))
-
-# the purpose of setFunc to find the different the different between two dom tree to trigger
-
-in the case of a browser application, it's translated to a set of DOM operations. When the app is updated (usually via setState), a new tree is generated. The new tree is diffed with the previous tree to compute which operations are needed to update the rendered app.
+- A React Hook for managing **state variables**.
+- Syntax:
+  ```javascript
+  const [currentState, functionToUpdate] = useState(initialValue); // always story in the memory of currnetState value
+  ```
